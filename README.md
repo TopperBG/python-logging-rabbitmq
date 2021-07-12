@@ -15,7 +15,7 @@ pip install python_logging_rabbitmq
 
 | Version      | Dependency      |
 |--------------|-----------------|
-| &gt;= 2.x    |  Pika >= 0.13   |
+| &gt;= 2.x    |  Pika == 0.13   |
 | <= 1.1.1     |  Pika <= 0.10   |
 
 
@@ -93,13 +93,13 @@ logger.addHandler(RabbitMQHandler(host='localhost', port=5672))
 
 logger.info('test info')
 logger.debug('test debug')
-logger.warn('test warning')
+logger.warning('test warning')
 ```
 
 The messages will be sent using the following routing keys:
 - myapp.INFO
 - myapp.DEBUG
-- myapp.WARN
+- myapp.WARNING
 
 For an explanation about topics and routing keys go to https://www.rabbitmq.com/tutorials/tutorial-five-python.html
 
@@ -142,6 +142,7 @@ These are the configuration allowed:
 | message_headers       | A dictionary of headers to be published with the message.                                                                                | None                                  |
 | record_fields         | A set of attributes that should be preserved from the record object.                                                                     | None                                  |
 | exclude_record_fields | A set of attributes that should be ignored from the record object.                                                                       | None                                  |
+| heartbeat             | Lower bound for heartbeat timeout                                                                                                        | 60                                    |
 
 
 ### Examples
